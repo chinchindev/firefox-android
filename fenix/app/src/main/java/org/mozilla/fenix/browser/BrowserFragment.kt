@@ -127,7 +127,10 @@ class BrowserFragment : BaseBrowserFragment(), UserInteractionHandler {
 
         browserToolbarView.view.addNavigationAction(leadingAction)
 
-        updateToolbarActions(isTablet = resources.getBoolean(R.bool.tablet))
+        this.isTablet = resources.getBoolean(R.bool.tablet)
+        if (this.isTablet) {
+            addTabletActions(requireContext())
+        }
 
         val readerModeAction =
             BrowserToolbar.ToggleButton(
